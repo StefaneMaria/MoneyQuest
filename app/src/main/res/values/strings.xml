@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoneyQuest</string>
+    <string name="sou_respons_vel">Sou Responsável</string>
+    <string name="sou_crian_a">Sou Criança</string>
 </resources>

@@ -4,6 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity"
     android:background="@drawable/login_background"
-    />
+    tools:context=".activities.LoginActivity">
+
+    <Button
+        android:id="@+id/bt_responsibleLogin"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/sou_respons_vel"
+        android:textColor="#8363F4"
+        android:textSize="16sp"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_childLogin"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/sou_crian_a"
+        android:textColor="#8363F4"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_responsibleLogin" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="bt_responsibleLogin,bt_childLogin" />
+</androidx.constraintlayout.widget.ConstraintLayout>
