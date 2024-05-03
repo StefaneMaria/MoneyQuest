@@ -12,14 +12,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="194dp"
         android:fontFamily="@font/inter_bold"
         android:text="Criança"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="194dp" />
 
     <EditText
         android:id="@+id/LoginEdit"
@@ -73,13 +72,14 @@
         android:id="@+id/LoginButton"
         android:layout_width="150dp"
         android:layout_height="48dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/inter_bold"
         android:text="Entrar"
         android:textColor="#8363F4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordEdit" />
 
