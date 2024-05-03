@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rectangle" />
+        app:srcCompat="@drawable/rectangle_treasure" />
 
     <ImageView
         android:id="@+id/bigCoin"
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/coin" />
+        app:srcCompat="@drawable/coin_shadow" />
 
     <TextView
         android:id="@+id/treasure"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moneyBar"
-        app:srcCompat="@drawable/pig" />
+        app:srcCompat="@drawable/pig_shadow" />
 
     <ImageView
         android:id="@+id/safe1"
@@ -58,7 +58,7 @@
         android:layout_marginEnd="47dp"
         app:layout_constraintEnd_toStartOf="@+id/safe2"
         app:layout_constraintTop_toBottomOf="@+id/moneyBar"
-        app:srcCompat="@drawable/pig" />
+        app:srcCompat="@drawable/pig_shadow" />
 
     <ImageView
         android:id="@+id/safe3"
@@ -68,7 +68,7 @@
         android:layout_marginTop="29dp"
         app:layout_constraintStart_toEndOf="@+id/safe2"
         app:layout_constraintTop_toBottomOf="@+id/moneyBar"
-        app:srcCompat="@drawable/pig" />
+        app:srcCompat="@drawable/pig_shadow" />
 
     <ProgressBar
         android:id="@+id/progress1"
@@ -105,8 +105,6 @@
         android:layout_width="318dp"
         android:layout_height="209dp"
         android:layout_marginTop="38dp"
-        android:layout_marginBottom="23dp"
-        app:layout_constraintBottom_toTopOf="@+id/appBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/safe2">
@@ -118,29 +116,32 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/appBar"
-        android:layout_width="1280dp"
-        android:layout_height="96dp"
-        android:padding="0dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="0dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="0dp"
+        android:id="@+id/imageView7"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/navbar" />
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="1280dp"
+        android:layout_height="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/missionsButton"
+        app:srcCompat="@drawable/bar" />
 
     <ImageView
         android:id="@+id/treasureButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/appBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/coin_bar_focus" />
+        app:srcCompat="@drawable/coin"
+        tools:layout_editor_absoluteY="647dp" />
 
     <ImageButton
         android:id="@+id/missionsButton"
@@ -157,7 +158,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/treasureButton"
-        app:srcCompat="@drawable/compass_bar" />
+        app:srcCompat="@drawable/compass" />
 
     <ImageButton
         android:id="@+id/safesButton"
@@ -170,6 +171,6 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/treasureButton"
-        app:srcCompat="@drawable/pig_bar" />
+        app:srcCompat="@drawable/pig" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
