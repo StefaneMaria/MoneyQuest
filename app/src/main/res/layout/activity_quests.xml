@@ -31,7 +31,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginEnd="82dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/treasureButton"
         app:srcCompat="@drawable/compass" />
@@ -40,7 +40,7 @@
         android:id="@+id/treasureButton"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
         android:layout_width="54dp"
         android:layout_height="54dp"
         android:layout_marginStart="86dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +72,7 @@
         app:srcCompat="@drawable/map_line" />
 
     <ImageView
-        android:id="@+id/missionsBar"
+        android:id="@+id/safesBar"
         android:layout_width="265dp"
         android:layout_height="116dp"
         android:layout_marginTop="196dp"
@@ -92,7 +92,7 @@
         app:srcCompat="@drawable/compass_shadow" />
 
     <TextView
-        android:id="@+id/textDailyMissions"
+        android:id="@+id/textSafes"
         android:layout_width="173dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -101,17 +101,19 @@
         android:text="Missões Diárias"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/missionsBar"
-        app:layout_constraintEnd_toEndOf="@+id/missionsBar"
-        app:layout_constraintStart_toStartOf="@+id/missionsBar" />
+        app:layout_constraintBottom_toBottomOf="@+id/safesBar"
+        app:layout_constraintEnd_toEndOf="@+id/safesBar"
+        app:layout_constraintStart_toStartOf="@+id/safesBar" />
 
     <ScrollView
         android:layout_width="305dp"
         android:layout_height="0dp"
         android:layout_marginTop="28dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/focusBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/missionsBar">
+        app:layout_constraintTop_toBottomOf="@+id/safesBar">
 
         <LinearLayout
             android:layout_width="match_parent"
