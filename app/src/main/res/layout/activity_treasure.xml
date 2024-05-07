@@ -74,11 +74,18 @@
         android:id="@+id/progress1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="73dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:max="50"
+        android:progress="25"
+        android:progressBackgroundTint="#FFFFFF"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:progressTint="#542CF6"
         app:layout_constraintEnd_toEndOf="@+id/safe1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/safe1"
-        app:layout_constraintTop_toBottomOf="@+id/safe1" />
+        app:layout_constraintTop_toBottomOf="@+id/safe1"
+        app:layout_marginBaseline="0dp" />
 
     <ProgressBar
         android:id="@+id/progress2"
