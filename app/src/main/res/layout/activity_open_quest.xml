@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".OpenQuestActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="107dp"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/questPlank"
+        app:srcCompat="@drawable/quest_board" />
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="37dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/close_button" />
+
+    <ImageButton
+        android:id="@+id/questPlank"
+        android:layout_width="0dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="33dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/madeira_missao" />
+
+    <ImageView
+        android:id="@+id/questImg"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textQuestName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Dever de Casa"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/questPlank"
+        app:layout_constraintEnd_toEndOf="@+id/questPlank"
+        app:layout_constraintStart_toStartOf="@+id/questPlank"
+        app:layout_constraintTop_toBottomOf="@+id/questImg" />
+
+    <TextView
+        android:id="@+id/textQuestValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="+ 0,25"
+        android:textColor="#ECC21A"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/questCoinImg"
+        app:layout_constraintEnd_toStartOf="@+id/questCoinImg"
+        app:layout_constraintTop_toTopOf="@+id/questCoinImg" />
+
+    <ImageView
+        android:id="@+id/questCoinImg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="92dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/questPlank"
+        app:srcCompat="@drawable/coin" />
+
+    <ImageView
+        android:id="@+id/balanceImg"
+        android:layout_width="116dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/balance_bar" />
+
+    <Button
+        android:id="@+id/btnsendMission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:backgroundTint="#FEA81A"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="00,25"
+        android:textColor="#ECC21A"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceImg"
+        app:layout_constraintStart_toStartOf="@+id/balanceImg"
+        app:layout_constraintTop_toTopOf="@+id/balanceImg"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <ImageView
+        android:id="@+id/questProveImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/photo_border"
+        android:padding="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textQuestDesc"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textQuestDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Fazer a lição de casa e enviar a foto "
+        android:textAlignment="center"
+        android:textColor="#584A4A"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/questCoinImg" />
+
+    <ImageButton
+        android:id="@+id/btnSendImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/questProveImg"
+        app:layout_constraintEnd_toEndOf="@+id/questProveImg"
+        app:layout_constraintStart_toStartOf="@+id/questProveImg"
+        app:layout_constraintTop_toTopOf="@+id/questProveImg"
+        app:srcCompat="@drawable/photo_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
