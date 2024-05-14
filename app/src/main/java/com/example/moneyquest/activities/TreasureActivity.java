@@ -20,9 +20,9 @@ public class TreasureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treasure);
 
-        RecyclerView safesRecyclerView = findViewById(R.id.safesRecyclerView);
-        SafeAdapter adapter = new SafeAdapter(safes);
-        safesRecyclerView.setAdapter(adapter);
+//        RecyclerView safesRecyclerView = findViewById(R.id.safesRecyclerView);
+//        SafeAdapter adapter = new SafeAdapter(safes);
+//        safesRecyclerView.setAdapter(adapter);
     }
 
 }

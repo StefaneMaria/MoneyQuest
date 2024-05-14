@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "619547402114",
+    "project_id": "money-quest-45b7a",
+    "storage_bucket": "money-quest-45b7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619547402114:android:fd6240b79cdb37f7c9799b",
+        "android_client_info": {
+          "package_name": "com.example.moneyquest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwtu7mvRdVBk1tlXGLxS6f0DebN1qQPNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
