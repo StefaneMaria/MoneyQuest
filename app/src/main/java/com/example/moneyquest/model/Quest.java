@@ -8,12 +8,13 @@ public class Quest {
 
     private String title;
     private String description;
-    private Long reward;
+    private Double reward;
+    private String image;
 
     public Quest() {
     }
 
-    public Quest(String title, String description, Long reward) {
+    public Quest(String title, String description, Double reward) {
         this.title = title;
         this.description = description;
         this.reward = reward;
@@ -23,16 +24,30 @@ public class Quest {
         List<Quest> quests = new ArrayList<>();
         for (HashMap<String, Object> questMap : questMaps) {
             if(questMap != null) {
-                Double rw = (Double) questMap.get("reward");
                 Quest quest = new Quest();
                 quest.setTitle((String) questMap.get("title"));
                 quest.setDescription((String) questMap.get("description"));
-                quest.setReward(rw.longValue());
+                quest.setReward(quest.mapNumbers(questMap.get("reward")));
+                quest.setImage((String) questMap.get("image"));
                 quests.add(quest);
             }
         }
 
         return quests;
+    }
+
+    private Double mapNumbers (Object value) {
+        if(value instanceof Long)
+            return ((Long) value).doubleValue();
+        return (Double) value;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTitle() {
@@ -51,11 +66,11 @@ public class Quest {
         this.description = description;
     }
 
-    public Long getReward() {
+    public Double getReward() {
         return reward;
     }
 
-    public void setReward(Long reward) {
+    public void setReward(Double reward) {
         this.reward = reward;
     }
 }
