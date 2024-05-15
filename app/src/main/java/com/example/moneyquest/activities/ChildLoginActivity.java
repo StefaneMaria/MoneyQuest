@@ -7,12 +7,16 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moneyquest.R;
@@ -35,8 +39,12 @@ public class ChildLoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     EditText editTextEmail, editTextSenha;
+    ImageView imgChoro;
+    TextView textErro, textChild;
+    boolean isPasswordVisible = false;
     Button loginButton;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,15 @@ public class ChildLoginActivity extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.LoginEdit);
         editTextSenha = findViewById(R.id.PasswordEdit);
+        textErro = findViewById(R.id.textErro);
+        textChild = findViewById(R.id.textChild);
+        imgChoro = findViewById(R.id.imgChoro);
+
+        textErro.setVisibility(View.INVISIBLE);
+        imgChoro.setVisibility(View.INVISIBLE);
+
+        editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
     }
 
     @Override
@@ -86,7 +103,7 @@ public class ChildLoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(ChildLoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(view,null);
+                            errorMsg();
                         }
                     }
                 });
@@ -98,6 +115,27 @@ public class ChildLoginActivity extends AppCompatActivity {
     private void updateUI(View view, FirebaseUser user) {
         Intent i = new Intent(getApplicationContext(), TreasureActivity.class);
         startActivity(i);
+    }
+
+    private void errorMsg() {
+        textChild.setVisibility(View.INVISIBLE);
+        textErro.setVisibility(View.VISIBLE);
+        imgChoro.setVisibility(View.VISIBLE);
+    }
+
+    private void togglePasswordVisibility() {
+        if (isPasswordVisible) {
+            // If password is visible, hide it by setting the input type to textPassword
+            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            isPasswordVisible = false;
+        } else {
+            // If password is hidden, show it by setting the input type to text
+            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            isPasswordVisible = true;
+        }
+
+        // Move the cursor to the end of the text to maintain the current position
+        editTextSenha.setSelection(editTextSenha.getText().length());
     }
 
 }
