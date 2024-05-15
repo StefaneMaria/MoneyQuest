@@ -7,17 +7,17 @@ import java.util.List;
 import kotlin.collections.EmptyList;
 
 public class Child {
-    private Long balance;
+    private Double balance;
     private List<Quest> quests;
     private List<Safe> safes;
 
     public Child() {
-        this.balance = 0L;
+        this.balance = 0.0;
         this.quests = new ArrayList<>();
         this.safes = new ArrayList<>();
     }
 
-    public Child(Long balance, List<Quest> quests, List<Safe> safes) {
+    public Child(Double balance, List<Quest> quests, List<Safe> safes) {
         this.balance = balance;
         this.quests = quests;
         this.safes = safes;
@@ -26,7 +26,7 @@ public class Child {
     public static Child fromHashMap(HashMap<String, Object> map) {
         Child child = new Child();
         if (map.containsKey("balance")) {
-            child.setBalance((Long) map.get("balance"));
+            child.setBalance((Double) map.get("balance"));
         }
         if (map.containsKey("quests")) {
             List<HashMap<String, Object>> questMaps = (List<HashMap<String, Object>>) map.get("quests");
@@ -41,11 +41,11 @@ public class Child {
         return child;
     }
 
-    public Long getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

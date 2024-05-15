@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.moneyquest.R;
 import com.example.moneyquest.SafeAdapter;
@@ -30,10 +32,16 @@ public class TreasureActivity extends AppCompatActivity {
 
     private Child child;
 
+    private TextView treasure;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treasure);
+
+        treasure = findViewById(R.id.txtTreasure);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Bundle extras = getIntent().getExtras();
@@ -74,11 +82,19 @@ public class TreasureActivity extends AppCompatActivity {
 
         childsRef = mDatabase.child("childs");
         childsRef.updateChildren(users);
+
+        setTreasure(child.getBalance());
     }
 
     private void getUserData(HashMap<String, Object> hashChild) {
         child = Child.fromHashMap(hashChild);
         Log.d("firebase", "Child map: " + child.getBalance());
+
+        setTreasure(child.getBalance());
+    }
+
+    private void setTreasure(Double balance) {
+        treasure.setText("R$ " + balance);
     }
 
 }
