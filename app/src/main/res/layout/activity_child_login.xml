@@ -120,6 +120,7 @@
         android:layout_marginTop="63dp"
         android:background="@android:color/transparent"
         android:cropToPadding="false"
+        android:onClick="back"
         android:padding="0dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"

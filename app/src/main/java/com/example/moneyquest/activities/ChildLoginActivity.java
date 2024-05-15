@@ -124,4 +124,8 @@ public class ChildLoginActivity extends AppCompatActivity {
         imgChoro.setVisibility(View.VISIBLE);
     }
 
+    public void back(View v){
+        finish();
+    }
+
 }
