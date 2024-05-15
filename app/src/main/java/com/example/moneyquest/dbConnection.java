@@ -12,9 +12,9 @@ public class dbConnection {
     }
 
     public void writeNewUser(String childId, String name, String email) {
-        Child child = new Child(name, email);
+//        Child child = new Child(name, email);
 
-        mDatabase.child("childs").child(childId).setValue(child);
+//        mDatabase.child("childs").child(childId).setValue(child);
 
     }
 

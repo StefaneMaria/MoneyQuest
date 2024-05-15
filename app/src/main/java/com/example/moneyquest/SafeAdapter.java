@@ -32,8 +32,8 @@ public class SafeAdapter extends RecyclerView.Adapter<SafeAdapter.SafeViewHolder
     public void onBindViewHolder(@NonNull SafeViewHolder holder, int position) {
         Safe safe = safes.get(position);
         holder.imageView.setImageDrawable(Drawable.createFromPath(safe.getImage()));
-        holder.progressBar.setProgress(safe.getBalance());
-        holder.progressBar.setMax(safe.getGoal());
+        holder.progressBar.setProgress(safe.getBalance().intValue());
+        holder.progressBar.setMax(safe.getGoal().intValue());
     }
 
     @Override

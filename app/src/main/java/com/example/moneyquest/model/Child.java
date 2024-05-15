@@ -1,51 +1,44 @@
 package com.example.moneyquest.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import kotlin.collections.EmptyList;
+
 public class Child {
-    private String nome;
-    private String email;
-    private String senha;
     private Long balance;
     private List<Quest> quests;
     private List<Safe> safes;
 
-    public Child(String nome, String email, String senha, Long balance, List<Quest> quests, List<Safe> safes) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+    public Child() {
+        this.balance = 0L;
+        this.quests = new ArrayList<>();
+        this.safes = new ArrayList<>();
+    }
+
+    public Child(Long balance, List<Quest> quests, List<Safe> safes) {
         this.balance = balance;
         this.quests = quests;
         this.safes = safes;
     }
 
-    public Child(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public static Child fromHashMap(HashMap<String, Object> map) {
+        Child child = new Child();
+        if (map.containsKey("balance")) {
+            child.setBalance((Long) map.get("balance"));
+        }
+        if (map.containsKey("quests")) {
+            List<HashMap<String, Object>> questMaps = (List<HashMap<String, Object>>) map.get("quests");
+            List<Quest> quests = Quest.fromHashMap(questMaps);
+            child.setQuests(quests);
+        }
+        if (map.containsKey("safes")) {
+            List<HashMap<String, Object>> safeMaps = (List<HashMap<String, Object>>) map.get("safes");
+            List<Safe> safes = Safe.fromHashMap(safeMaps);
+            child.setSafes(safes);
+        }
+        return child;
     }
 
     public Long getBalance() {

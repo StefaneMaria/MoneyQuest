@@ -114,6 +114,7 @@ public class ChildLoginActivity extends AppCompatActivity {
 
     private void updateUI(View view, FirebaseUser user) {
         Intent i = new Intent(getApplicationContext(), TreasureActivity.class);
+        i.putExtra("child_id", user.getUid());
         startActivity(i);
     }
 
@@ -121,21 +122,6 @@ public class ChildLoginActivity extends AppCompatActivity {
         textChild.setVisibility(View.INVISIBLE);
         textErro.setVisibility(View.VISIBLE);
         imgChoro.setVisibility(View.VISIBLE);
-    }
-
-    private void togglePasswordVisibility() {
-        if (isPasswordVisible) {
-            // If password is visible, hide it by setting the input type to textPassword
-            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-            isPasswordVisible = false;
-        } else {
-            // If password is hidden, show it by setting the input type to text
-            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-            isPasswordVisible = true;
-        }
-
-        // Move the cursor to the end of the text to maintain the current position
-        editTextSenha.setSelection(editTextSenha.getText().length());
     }
 
 }
