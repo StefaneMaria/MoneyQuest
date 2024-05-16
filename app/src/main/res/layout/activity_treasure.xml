@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activities.TreasureActivity">
+
+    <ImageView
+        android:id="@+id/moneyBar"
+        android:layout_width="265dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="141dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_treasure" />
+
+    <ImageView
+        android:id="@+id/bigCoin"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coin_shadow" />
+
+    <TextView
+        android:id="@+id/treasure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="R$ 00,00"
+        android:textColor="#584A4A"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/moneyBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/safe2"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moneyBar"
+        app:srcCompat="@drawable/pig_shadow" />
+
+    <ImageView
+        android:id="@+id/safeImage"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="47dp"
+        app:layout_constraintEnd_toStartOf="@+id/safe2"
+        app:layout_constraintTop_toBottomOf="@+id/moneyBar"
+        app:srcCompat="@drawable/pig_shadow" />
+
+    <ImageView
+        android:id="@+id/safe3"
+        android:layout_width="73dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintStart_toEndOf="@+id/safe2"
+        app:layout_constraintTop_toBottomOf="@+id/moneyBar"
+        app:srcCompat="@drawable/pig_shadow" />
+
+    <ProgressBar
+        android:id="@+id/safeProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:max="50"
+        android:progress="25"
+        android:progressBackgroundTint="#FFFFFF"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:progressTint="#542CF6"
+        app:layout_constraintEnd_toEndOf="@+id/safeImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/safeImage"
+        app:layout_constraintTop_toBottomOf="@+id/safeImage"
+        app:layout_marginBaseline="0dp" />
+
+    <ProgressBar
+        android:id="@+id/progress2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/safe2"
+        app:layout_constraintStart_toStartOf="@+id/safe2"
+        app:layout_constraintTop_toBottomOf="@+id/safe2" />
+
+    <ProgressBar
+        android:id="@+id/progress3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/safe3"
+        app:layout_constraintStart_toStartOf="@+id/safe3"
+        app:layout_constraintTop_toBottomOf="@+id/safe3" />
+
+    <ScrollView
+        android:id="@+id/missionsView"
+        android:layout_width="318dp"
+        android:layout_height="209dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/safe2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="1280dp"
+        android:layout_height="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/missionsButton"
+        app:srcCompat="@drawable/bar" />
+
+    <ImageView
+        android:id="@+id/treasureButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/coin" />
+
+    <ImageButton
+        android:id="@+id/missionsButton"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="14dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/treasureButton"
+        app:srcCompat="@drawable/compass" />
+
+    <ImageButton
+        android:id="@+id/safesButton"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="14dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/treasureButton"
+        app:srcCompat="@drawable/pig" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
