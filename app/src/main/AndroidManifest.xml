@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MoneyQuest"
         tools:targetApi="31">
         <activity
-            android:name=".OpenSafeActivity"
+            android:name=".activities.OpenSafeActivity"
             android:exported="false" />
         <activity
-            android:name=".OpenQuestActivity"
+            android:name=".activities.OpenQuestActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SafesActivity"

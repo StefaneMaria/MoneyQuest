@@ -30,10 +30,10 @@
         app:srcCompat="@drawable/coin_shadow" />
 
     <TextView
-        android:id="@+id/treasure"
+        android:id="@+id/txtTreasure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/inter_bold"
         android:text="R$ 00,00"
         android:textColor="#584A4A"
