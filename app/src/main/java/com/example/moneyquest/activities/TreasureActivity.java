@@ -62,7 +62,7 @@ public class TreasureActivity extends AppCompatActivity {
                 }
                 else {
                     Log.d("firebase", "User Found");
-                    getOrCreateUser(task.getResult().getValue(), childId);
+                        getOrCreateUser(task.getResult().getValue(), childId);
                 }
             }
         });

@@ -109,21 +109,6 @@
         app:layout_constraintStart_toStartOf="@+id/safe3"
         app:layout_constraintTop_toBottomOf="@+id/safe3" />
 
-    <ScrollView
-        android:id="@+id/missionsView"
-        android:layout_width="318dp"
-        android:layout_height="209dp"
-        android:layout_marginTop="38dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/safe2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="90dp"
@@ -182,5 +167,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/treasureButton"
         app:srcCompat="@drawable/pig" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
