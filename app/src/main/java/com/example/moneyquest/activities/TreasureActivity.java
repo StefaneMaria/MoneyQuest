@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -13,8 +14,9 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.moneyquest.R;
-import com.example.moneyquest.SafeAdapter;
+import com.example.moneyquest.adapter.QuestAdapter;
 import com.example.moneyquest.model.Child;
+import com.example.moneyquest.model.Quest;
 import com.example.moneyquest.model.Safe;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +54,11 @@ public class TreasureActivity extends AppCompatActivity {
             Log.d("firebase", mDatabase.toString());
             verifyUser(childId);
         }
+
+        System.out.println("teste");
+
+//        setupRecyclerView();
+
     }
 
     private void verifyUser(String childId) {
@@ -91,6 +99,11 @@ public class TreasureActivity extends AppCompatActivity {
         Log.d("firebase", "Child map: " + child.getBalance());
 
         setTreasure(child.getBalance());
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        QuestAdapter questAdapter = new QuestAdapter(this, child.getQuests());
+        recyclerView.setAdapter(questAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setTreasure(Double balance) {

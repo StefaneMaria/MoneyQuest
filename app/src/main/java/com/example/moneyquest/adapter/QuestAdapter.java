@@ -15,13 +15,14 @@ import com.example.moneyquest.R;
 import com.example.moneyquest.model.Quest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<Quest> questList;
+    List<Quest> questList;
 
-    public QuestAdapter(Context context, ArrayList<Quest> questList) {
+    public QuestAdapter(Context context, List<Quest> questList) {
         this.context = context;
         this.questList = questList;
     }
@@ -40,8 +41,8 @@ public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull QuestAdapter.MyViewHolder holder, int position) {
 
         holder.titleText.setText(questList.get(position).getTitle());
-        holder.iconImage.setImageDrawable(Drawable.createFromPath("@drawable/pig"));
-        holder.plankImage.setImageDrawable(Drawable.createFromPath("@drawable/madeira_missao"));
+        holder.iconImage.setImageResource(R.drawable.pig);
+        holder.plankImage.setImageResource(R.drawable.madeira_missao);
 
     }
 

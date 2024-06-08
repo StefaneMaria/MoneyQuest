@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,18 +27,16 @@
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/madeira_missao" />
 
             <ImageView
                 android:id="@+id/imgMission"
-                android:layout_width="78dp"
+                android:layout_width="70dp"
                 android:layout_height="78dp"
-                android:layout_marginEnd="192dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="@+id/imgPlank"
-                app:layout_constraintEnd_toEndOf="@+id/imgPlank"
+                app:layout_constraintEnd_toStartOf="@+id/imgPlank"
                 app:layout_constraintTop_toTopOf="@+id/imgPlank"
                 app:layout_constraintVertical_bias="0.0"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -49,8 +50,10 @@
                 android:textColor="#000000"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgPlank"
+                app:layout_constraintEnd_toEndOf="@+id/imgPlank"
+                app:layout_constraintStart_toStartOf="@+id/imgPlank"
                 app:layout_constraintTop_toTopOf="@+id/imgPlank"
-                tools:layout_editor_absoluteX="150dp" />
+                app:layout_constraintVertical_bias="0.49" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

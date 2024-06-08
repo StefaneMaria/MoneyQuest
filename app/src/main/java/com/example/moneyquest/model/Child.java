@@ -25,7 +25,7 @@ public class Child {
 
     public static Child fromHashMap(HashMap<String, Object> map) {
         Child child = new Child();
-        if (map.containsKey("balance") && ((Long)map.get("balance")) != 0L) {
+        if (map.containsKey("balance") && mapNumbers(map.get("balance")) != 0) {
             child.setBalance((Double) map.get("balance"));
         }
         if (map.containsKey("quests")) {
@@ -39,6 +39,12 @@ public class Child {
             child.setSafes(safes);
         }
         return child;
+    }
+
+    private static Double mapNumbers (Object value) {
+        if(value instanceof Long)
+            return ((Long) value).doubleValue();
+        return (Double) value;
     }
 
     public Double getBalance() {
