@@ -23,12 +23,12 @@ public class Quest {
     public static List<Quest> fromHashMap(List<HashMap<String, Object>> questMaps) {
         List<Quest> quests = new ArrayList<>();
         for (HashMap<String, Object> questMap : questMaps) {
-            if(questMap != null) {
+            if(questMap != null && ((String)questMap.get("image")).isEmpty()) {
                 Quest quest = new Quest();
                 quest.setTitle((String) questMap.get("title"));
                 quest.setDescription((String) questMap.get("description"));
                 quest.setReward(quest.mapNumbers(questMap.get("reward")));
-                quest.setImage((String) questMap.get("image"));
+                quest.setImage("");
                 quests.add(quest);
             }
         }

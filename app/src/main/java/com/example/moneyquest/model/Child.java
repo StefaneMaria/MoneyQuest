@@ -2,6 +2,7 @@ package com.example.moneyquest.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import kotlin.collections.EmptyList;
@@ -45,6 +46,21 @@ public class Child {
         if(value instanceof Long)
             return ((Long) value).doubleValue();
         return (Double) value;
+    }
+
+    public void updateBalance(Double value) {
+        this.balance += value;
+    }
+
+    public void removeQuestByTitle(String title) {
+        Iterator<Quest> iterator = quests.iterator();
+        while (iterator.hasNext()) {
+            Quest quest = iterator.next();
+            if (quest.getTitle().equals(title)) {
+                iterator.remove();
+                break;
+            }
+        }
     }
 
     public Double getBalance() {
