@@ -14,9 +14,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.moneyquest.R;
+import com.example.moneyquest.RequestCode;
 import com.example.moneyquest.adapter.QuestAdapter;
 import com.example.moneyquest.adapter.RecyclerViewInterface;
 import com.example.moneyquest.adapter.SafesAdapter;
@@ -29,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,10 +40,6 @@ import java.util.Map;
 
 public class TreasureActivity extends AppCompatActivity implements RecyclerViewInterface {
 
-    private final int REQUEST_QUEST = 001;
-    private final int REQUEST_SAFE = 011;
-    private final int QUEST_SEND_CODE = 10;
-    private final int SAFE_DEPOSIT_CODE = 10;
     private DatabaseReference mDatabase;
     private DatabaseReference childsRef;
 
@@ -127,7 +126,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
     private void setSafesRecycler() {
         RecyclerView recyclerView = findViewById(R.id.recyclerSafes);
-        safesAdapter = new SafesAdapter(this, child.getSafes(), this);
+        safesAdapter = new SafesAdapter(this, child.getSafes(), this, R.layout.safes_treasure);
         recyclerView.setAdapter(safesAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -151,7 +150,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
         i.putExtra("child_id", childId);
         i.putExtra("child_balance", child.getBalance().toString());
-        startActivityForResult(i, REQUEST_QUEST);
+        startActivityForResult(i, RequestCode.REQUEST_QUEST.getCode());
     }
 
     @Override
@@ -168,7 +167,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
         i.putExtra("child_balance", child.getBalance().toString());
         i.putExtra("safePos", String.valueOf(position+1));
 
-        startActivityForResult(i, REQUEST_SAFE);
+        startActivityForResult(i, RequestCode.REQUEST_SAFE.getCode());
     }
 
 
@@ -176,7 +175,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_QUEST && resultCode == QUEST_SEND_CODE) {
+        if (requestCode == RequestCode.REQUEST_QUEST.getCode() && resultCode == RequestCode.QUEST_SEND_CODE.getCode()) {
             Double value = Double.valueOf(data.getStringExtra("value"));
             String title = data.getStringExtra("title");
             int position = data.getIntExtra("position", 0);
@@ -189,7 +188,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
             questAdapter.notifyItemRemoved(position);
         }
 
-        if (requestCode == REQUEST_SAFE && resultCode == SAFE_DEPOSIT_CODE) {
+        if (requestCode == RequestCode.REQUEST_SAFE.getCode() && resultCode == RequestCode.SAFE_DEPOSIT_CODE.getCode()) {
             int position = data.getIntExtra("position", 0);
             int progress = data.getIntExtra("progress", 0);
             child.getSafes().get(position).setBalance(progress);
@@ -201,6 +200,54 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
             safesAdapter.notifyItemChanged(position);
         }
+
+        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.QUEST_SCREEN_CODE.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+        }
+
+        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.GOTO_SAFES.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+
+            startSafeScreen();
+        }
+
+        if(requestCode == RequestCode.REQUEST_SAFE_SCREEN.getCode() && resultCode == RequestCode.SAFE_SCREEN_CODE.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            safesAdapter.notifyItemRangeChanged(0, child.getSafes().size());
+        }
+
+        if(requestCode == RequestCode.REQUEST_SAFE_SCREEN.getCode() && resultCode == RequestCode.GOTO_QUESTS.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            safesAdapter.notifyItemRangeChanged(0, child.getSafes().size());
+
+            startQuestScreen();
+        }
+    }
+
+    public void questsScreen(View v) {
+        startQuestScreen();
+    }
+
+    public void safesScreen(View v) {
+        startSafeScreen();
+    }
+
+    private void startSafeScreen() {
+        Intent i = new Intent(getApplicationContext(), SafesActivity.class);
+        i.putExtra("child", child);
+        i.putExtra("childId", childId);
+
+        startActivityForResult(i, RequestCode.REQUEST_SAFE_SCREEN.getCode());
+    }
+
+    private void startQuestScreen() {
+        Intent i = new Intent(getApplicationContext(), QuestsActivity.class);
+        i.putExtra("child", child);
+        i.putExtra("childId", childId);
+
+        startActivityForResult(i, RequestCode.REQUEST_QUEST_SCREEN.getCode());
     }
 
 }

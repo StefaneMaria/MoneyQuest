@@ -58,6 +58,7 @@
         android:layout_height="54dp"
         android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
+        android:onClick="treasureScreen"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
         android:layout_marginEnd="86dp"
         android:layout_marginBottom="14dp"
         android:background="@android:color/transparent"
+        android:onClick="questsScreen"
         android:padding="0dp"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
@@ -91,22 +93,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pig_shadow" />
 
-    <ScrollView
-        android:layout_width="305dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/barFocus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/safesBar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <ImageButton
         android:id="@+id/safesButton"
         android:layout_width="70dp"
@@ -118,5 +104,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/treasureButton"
         app:srcCompat="@drawable/pig" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/safesRecycler"
+        android:layout_width="305dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/barFocus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/safesBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

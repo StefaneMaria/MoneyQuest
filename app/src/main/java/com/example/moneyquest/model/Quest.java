@@ -1,10 +1,11 @@
 package com.example.moneyquest.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Quest {
+public class Quest implements Serializable {
 
     private String title;
     private String description;

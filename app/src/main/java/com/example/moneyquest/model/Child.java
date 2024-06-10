@@ -1,5 +1,6 @@
 package com.example.moneyquest.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.List;
 
 import kotlin.collections.EmptyList;
 
-public class Child {
+public class Child implements Serializable {
     private Double balance;
     private List<Quest> quests;
     private List<Safe> safes;

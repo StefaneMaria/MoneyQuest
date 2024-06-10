@@ -13,12 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.moneyquest.R;
+import com.example.moneyquest.RequestCode;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class OpenSafeActivity extends AppCompatActivity {
 
-    private final int SAFE_DEPOSIT_CODE = 10;
     private final int SAFE_CLOSE_CODE = 11;
     ProgressBar progressBar;
     TextView safeName, value, balance;
@@ -81,7 +81,7 @@ public class OpenSafeActivity extends AppCompatActivity {
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("childs").child(childId).child("safes").child(safePos).child("balance").setValue(progress);
 
-            setResult(SAFE_DEPOSIT_CODE,
+            setResult(RequestCode.SAFE_DEPOSIT_CODE.getCode(),
                     new Intent()
                             .putExtra("balance", balanceValue)
                             .putExtra("progress", progress)

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.moneyquest.R;
+import com.example.moneyquest.RequestCode;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,7 +27,6 @@ import java.util.Arrays;
 public class OpenQuestActivity extends AppCompatActivity {
 
     private final int GALLERY_REQUEST_CODE = 1000;
-    private final int QUEST_SEND_CODE = 10;
     private final int QUEST_CLOSE_CODE = 11;
     ImageView imwQuestImage, imwQuestProve;
     TextView txvQuestName, txvQuestDesc, txvQuestReward, txvChildBalance;
@@ -94,7 +94,7 @@ public class OpenQuestActivity extends AppCompatActivity {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("childs").child(childId).child("quests").child(quest_position).child("image").setValue(data.toString());
 
-        setResult(QUEST_SEND_CODE,
+        setResult(RequestCode.QUEST_SEND_CODE.getCode(),
                 new Intent()
                         .putExtra("value", questReward)
                         .putExtra("title", questTitle)

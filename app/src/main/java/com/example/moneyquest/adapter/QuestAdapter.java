@@ -61,7 +61,7 @@ public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder
             super(itemView);
 
             plankImage = itemView.findViewById(R.id.imgPlank);
-            iconImage = itemView.findViewById(R.id.image);
+            iconImage = itemView.findViewById(R.id.imgPig);
             titleText = itemView.findViewById(R.id.textTitle);
 
             itemView.setOnClickListener(new View.OnClickListener() {

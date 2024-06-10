@@ -1,10 +1,11 @@
 package com.example.moneyquest.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Safe {
+public class Safe implements Serializable {
     private String name;
     private String color;
     private Integer goal;
@@ -14,7 +15,7 @@ public class Safe {
     }
 
     public Safe(String color, Integer goal, Integer balance) {
-        this.color = "@drawable/pig";
+        this.color = color;
         this.goal = goal;
         this.balance = balance;
     }

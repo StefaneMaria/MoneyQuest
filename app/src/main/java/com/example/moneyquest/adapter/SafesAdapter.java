@@ -22,18 +22,19 @@ public class SafesAdapter extends RecyclerView.Adapter<SafesAdapter.MyViewHolder
 
     Context context;
     List<Safe> safeList;
-
-    public SafesAdapter(Context context, List<Safe> safeList, RecyclerViewInterface recyclerViewInterface) {
+    int layout;
+    public SafesAdapter(Context context, List<Safe> safeList, RecyclerViewInterface recyclerViewInterface, int layout) {
         this.recyclerViewInterface = recyclerViewInterface;
         this.context = context;
         this.safeList = safeList;
+        this.layout = layout;
     }
 
     @NonNull
     @Override
     public SafesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.safes_treasure, parent, false);
+        View view = inflater.inflate(layout, parent, false);
 
         return new SafesAdapter.MyViewHolder(view, recyclerViewInterface);
     }
