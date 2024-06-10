@@ -57,7 +57,7 @@
         app:srcCompat="@drawable/close_button" />
 
     <ProgressBar
-        android:id="@+id/safeProgress"
+        android:id="@+id/progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -95,7 +95,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/safeProgress" />
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
 
     <ImageView
         android:id="@+id/img"

@@ -6,15 +6,15 @@ import java.util.List;
 
 public class Safe {
     private String name;
-    private String image;
-    private Double goal;
-    private Double balance;
+    private String color;
+    private Integer goal;
+    private Integer balance;
 
     public Safe() {
     }
 
-    public Safe(Double goal, Double balance) {
-        this.image = "@drawable/pig";
+    public Safe(String color, Integer goal, Integer balance) {
+        this.color = "@drawable/pig";
         this.goal = goal;
         this.balance = balance;
     }
@@ -25,8 +25,8 @@ public class Safe {
             if(safeMap != null) {
                 Safe safe = new Safe();
                 safe.setBalance(safe.mapNumbers(safeMap.get("balance")));
-                safe.setGoal(safe.mapNumbers(safeMap.get("balance")));
-                safe.setImage((String) safeMap.get("image"));
+                safe.setGoal(safe.mapNumbers(safeMap.get("goal")));
+                safe.setColor((String) safeMap.get("color"));
                 safe.setName((String) safeMap.get("name"));
                 safes.add(safe);
             }
@@ -35,10 +35,10 @@ public class Safe {
         return safes;
     }
 
-    private Double mapNumbers (Object value) {
+    private Integer mapNumbers (Object value) {
         if(value instanceof Long)
-            return ((Long) value).doubleValue();
-        return (Double) value;
+            return ((Long) value).intValue();
+        return (Integer) value;
     }
 
     public String getName() {
@@ -49,27 +49,27 @@ public class Safe {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getColor() {
+        return color;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public Double getGoal() {
+    public Integer getGoal() {
         return goal;
     }
 
-    public void setGoal(Double goal) {
+    public void setGoal(Integer goal) {
         this.goal = goal;
     }
 
-    public Double getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 }

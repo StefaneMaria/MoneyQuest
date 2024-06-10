@@ -1,7 +1,6 @@
 package com.example.moneyquest.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moneyquest.R;
 import com.example.moneyquest.model.Quest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder> {
@@ -63,7 +61,7 @@ public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder
             super(itemView);
 
             plankImage = itemView.findViewById(R.id.imgPlank);
-            iconImage = itemView.findViewById(R.id.imgMission);
+            iconImage = itemView.findViewById(R.id.image);
             titleText = itemView.findViewById(R.id.textTitle);
 
             itemView.setOnClickListener(new View.OnClickListener() {

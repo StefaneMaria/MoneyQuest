@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.moneyquest.R;
 import com.example.moneyquest.adapter.QuestAdapter;
 import com.example.moneyquest.adapter.RecyclerViewInterface;
+import com.example.moneyquest.adapter.SafesAdapter;
 import com.example.moneyquest.model.Child;
 import com.example.moneyquest.model.Quest;
 import com.example.moneyquest.model.Safe;
@@ -46,7 +47,9 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     private Child child;
 
     private TextView treasure;
-    private QuestAdapter questAdapter;DecimalFormat formato = new DecimalFormat("#.##");
+    private QuestAdapter questAdapter;
+    private SafesAdapter safesAdapter;
+    private DecimalFormat formato = new DecimalFormat("#.##");
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -109,10 +112,24 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
         setTreasure(child.getBalance());
 
+        setSafesRecycler();
+        setQuestsRecycler();
+    }
+
+    private void setQuestsRecycler() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         questAdapter = new QuestAdapter(this, child.getQuests(), this);
         recyclerView.setAdapter(questAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setSafesRecycler() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerSafes);
+        safesAdapter = new SafesAdapter(this, child.getSafes());
+        recyclerView.setAdapter(safesAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     private void setTreasure(Double balance) {
