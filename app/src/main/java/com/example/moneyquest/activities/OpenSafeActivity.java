@@ -17,6 +17,8 @@ import com.example.moneyquest.RequestCode;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
+
 public class OpenSafeActivity extends AppCompatActivity {
 
     private final int SAFE_CLOSE_CODE = 11;
@@ -28,6 +30,8 @@ public class OpenSafeActivity extends AppCompatActivity {
     Integer goal, progress;
     Integer count = 0;
     Double balanceValue;
+
+    private DecimalFormat formato = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +48,18 @@ public class OpenSafeActivity extends AppCompatActivity {
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor(getIntent().getStringExtra("color"))));
 
         safeName.setText(getIntent().getStringExtra("safeName"));
-        balance.setText(getIntent().getStringExtra("child_balance"));
-
+        String childBalane = getIntent().getStringExtra("child_balance");
+        setBalance(Double.valueOf(childBalane));
         goal = getIntent().getIntExtra("goal", 0);
         progress = getIntent().getIntExtra("progress", 0);
         balanceValue = Double.parseDouble(getIntent().getStringExtra("child_balance"));
         safePos = getIntent().getStringExtra("safePos");
         childId = getIntent().getStringExtra("child_id");
         value.setText("00.00");
+    }
+
+    private void setBalance(Double value) {
+        balance.setText(formato.format(value));
     }
 
     public void plus (View v) {

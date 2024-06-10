@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class OpenQuestActivity extends AppCompatActivity {
@@ -30,9 +31,10 @@ public class OpenQuestActivity extends AppCompatActivity {
     private final int QUEST_CLOSE_CODE = 11;
     ImageView imwQuestImage, imwQuestProve;
     TextView txvQuestName, txvQuestDesc, txvQuestReward, txvChildBalance;
-
-    String childId, quest_position, questReward, questTitle;
+    String childId, questReward, questTitle, quest_position;
     Bitmap imageToSave;
+
+    private DecimalFormat formato = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,12 @@ public class OpenQuestActivity extends AppCompatActivity {
         txvQuestName.setText(questTitle);
         txvQuestDesc.setText(questDesc);
         txvQuestReward.setText(questReward);
-        txvChildBalance.setText(childBalance);
+        setBalance(Double.parseDouble(childBalance));
         imwQuestImage.setImageResource(R.drawable.pig);
+    }
+
+    private void setBalance(Double balance) {
+        txvChildBalance.setText(formato.format(balance));
     }
 
     public void pickImage(View v) {
@@ -91,8 +97,9 @@ public class OpenQuestActivity extends AppCompatActivity {
         imageToSave.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
+        int position = Integer.valueOf(quest_position) + 1;
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("childs").child(childId).child("quests").child(quest_position).child("image").setValue(data.toString());
+        mDatabase.child("childs").child(childId).child("quests").child(String.valueOf(position)).child("image").setValue(data.toString());
 
         setResult(RequestCode.QUEST_SEND_CODE.getCode(),
                 new Intent()

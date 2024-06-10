@@ -26,6 +26,7 @@ public class QuestsActivity extends AppCompatActivity implements RecyclerViewInt
     private QuestAdapter questAdapter;
     private Child child;
     private String childId;
+    private Integer positionRemoved;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +70,13 @@ public class QuestsActivity extends AppCompatActivity implements RecyclerViewInt
         if (requestCode == RequestCode.REQUEST_QUEST.getCode() && resultCode == RequestCode.QUEST_SEND_CODE.getCode()) {
             Double value = Double.valueOf(data.getStringExtra("value"));
             String title = data.getStringExtra("title");
-            int position = data.getIntExtra("position", 0);
+            positionRemoved = data.getIntExtra("position", 0);
 
             child.updateBalance(value);
             mDatabase.child("childs").child(childId).child("balance").setValue(child.getBalance());
 
             child.removeQuestByTitle(title);
-            questAdapter.notifyItemRemoved(position);
+            questAdapter.notifyItemRemoved(positionRemoved);
         }
     }
 
@@ -86,14 +87,16 @@ public class QuestsActivity extends AppCompatActivity implements RecyclerViewInt
     public void treasureScreen(View v) {
         setResult(RequestCode.QUEST_SCREEN_CODE.getCode(),
                 new Intent()
-                        .putExtra("child", child));
+                        .putExtra("child", child)
+                        .putExtra("positionRemoved", positionRemoved));
         finish();
     }
 
     public void safesScreen(View v) {
         setResult(RequestCode.GOTO_SAFES.getCode(),
                 new Intent()
-                        .putExtra("child", child));
+                        .putExtra("child", child)
+                        .putExtra("positionRemoved", positionRemoved));
         finish();
     }
 }

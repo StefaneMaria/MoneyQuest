@@ -220,12 +220,20 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     private void handleQuestScreenResults(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.QUEST_SCREEN_CODE.getCode()) {
             child = (Child) data.getSerializableExtra("child");
-            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+            int removed = data.getIntExtra("positionRemoved", 50);
+
+            if (removed == 50) return;
+
+            questAdapter.notifyItemRemoved(removed);
         }
 
         if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.GOTO_SAFES.getCode()) {
             child = (Child) data.getSerializableExtra("child");
-            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+            int removed = data.getIntExtra("positionRemoved", 50);
+
+            if (removed == 50) return;
+
+            questAdapter.notifyItemRemoved(removed);
 
             startSafeScreen();
         }

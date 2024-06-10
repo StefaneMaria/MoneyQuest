@@ -41,7 +41,7 @@ public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull QuestAdapter.MyViewHolder holder, int position) {
 
         holder.titleText.setText(questList.get(position).getTitle());
-        holder.iconImage.setImageResource(R.drawable.pig);
+        holder.iconImage.setImageResource(R.drawable.compass);
         holder.plankImage.setImageResource(R.drawable.madeira_missao);
 
     }
