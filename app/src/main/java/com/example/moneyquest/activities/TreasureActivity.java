@@ -70,8 +70,6 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
             verifyUser(childId);
         }
 
-        System.out.println("teste");
-
     }
 
     private void verifyUser(String childId) {
@@ -94,6 +92,9 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
             createNewUser(childId);
         else
             getUserData((HashMap<String, Object>) data);
+
+        setSafesRecycler();
+        setQuestsRecycler();
     }
 
     private void createNewUser(String childId) {
@@ -112,9 +113,6 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
         Log.d("firebase", "Child map: " + child.getBalance());
 
         setTreasure(child.getBalance());
-
-        setSafesRecycler();
-        setQuestsRecycler();
     }
 
     private void setQuestsRecycler() {
@@ -201,18 +199,11 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
             safesAdapter.notifyItemChanged(position);
         }
 
-        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.QUEST_SCREEN_CODE.getCode()) {
-            child = (Child) data.getSerializableExtra("child");
-            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
-        }
+        handleQuestScreenResults(requestCode, resultCode, data);
+        handleSafesScreenResults(requestCode, resultCode, data);
+    }
 
-        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.GOTO_SAFES.getCode()) {
-            child = (Child) data.getSerializableExtra("child");
-            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
-
-            startSafeScreen();
-        }
-
+    private void handleSafesScreenResults(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == RequestCode.REQUEST_SAFE_SCREEN.getCode() && resultCode == RequestCode.SAFE_SCREEN_CODE.getCode()) {
             child = (Child) data.getSerializableExtra("child");
             safesAdapter.notifyItemRangeChanged(0, child.getSafes().size());
@@ -226,6 +217,20 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
         }
     }
 
+    private void handleQuestScreenResults(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.QUEST_SCREEN_CODE.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+        }
+
+        if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.GOTO_SAFES.getCode()) {
+            child = (Child) data.getSerializableExtra("child");
+            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
+
+            startSafeScreen();
+        }
+    }
+
     public void questsScreen(View v) {
         startQuestScreen();
     }
@@ -235,19 +240,23 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     }
 
     private void startSafeScreen() {
-        Intent i = new Intent(getApplicationContext(), SafesActivity.class);
-        i.putExtra("child", child);
-        i.putExtra("childId", childId);
+        Intent i = setIntentWithChild(SafesActivity.class);
 
         startActivityForResult(i, RequestCode.REQUEST_SAFE_SCREEN.getCode());
     }
 
     private void startQuestScreen() {
-        Intent i = new Intent(getApplicationContext(), QuestsActivity.class);
-        i.putExtra("child", child);
-        i.putExtra("childId", childId);
+        Intent i = setIntentWithChild(QuestsActivity.class);
 
         startActivityForResult(i, RequestCode.REQUEST_QUEST_SCREEN.getCode());
+    }
+
+    @NonNull
+    private Intent setIntentWithChild(Class<?> c) {
+        Intent i = new Intent(getApplicationContext(), c);
+        i.putExtra("child", child);
+        i.putExtra("childId", childId);
+        return i;
     }
 
 }
