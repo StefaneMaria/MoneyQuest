@@ -71,7 +71,7 @@ public class QuestAdapter extends RecyclerView.Adapter<QuestAdapter.MyViewHolder
                         int pos = getAdapterPosition();
 
                         if(pos != RecyclerView.NO_POSITION) {
-                            recyclerViewInterface.onItemClick(pos);
+                            recyclerViewInterface.onQuestClick(pos);
                         }
                     }
                 }

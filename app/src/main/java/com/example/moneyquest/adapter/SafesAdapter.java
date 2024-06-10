@@ -3,7 +3,6 @@ package com.example.moneyquest.adapter;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,13 @@ import com.example.moneyquest.model.Safe;
 import java.util.List;
 
 public class SafesAdapter extends RecyclerView.Adapter<SafesAdapter.MyViewHolder> {
-//    private final RecyclerViewInterface recyclerViewInterface;
+    private final RecyclerViewInterface recyclerViewInterface;
 
     Context context;
     List<Safe> safeList;
 
-    public SafesAdapter(Context context, List<Safe> safeList) {
-//        this.recyclerViewInterface = recyclerViewInterface;
+    public SafesAdapter(Context context, List<Safe> safeList, RecyclerViewInterface recyclerViewInterface) {
+        this.recyclerViewInterface = recyclerViewInterface;
         this.context = context;
         this.safeList = safeList;
     }
@@ -36,7 +35,7 @@ public class SafesAdapter extends RecyclerView.Adapter<SafesAdapter.MyViewHolder
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.safes_treasure, parent, false);
 
-        return new SafesAdapter.MyViewHolder(view);
+        return new SafesAdapter.MyViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -57,11 +56,24 @@ public class SafesAdapter extends RecyclerView.Adapter<SafesAdapter.MyViewHolder
         ImageView pigImage;
         ProgressBar progressBar;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             pigImage = itemView.findViewById(R.id.imgPig);
             progressBar = itemView.findViewById(R.id.progressBar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewInterface != null) {
+                        int pos = getAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onSafeClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

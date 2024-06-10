@@ -38,7 +38,9 @@ import java.util.Map;
 public class TreasureActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private final int REQUEST_QUEST = 001;
+    private final int REQUEST_SAFE = 011;
     private final int QUEST_SEND_CODE = 10;
+    private final int SAFE_DEPOSIT_CODE = 10;
     private DatabaseReference mDatabase;
     private DatabaseReference childsRef;
 
@@ -125,7 +127,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
     private void setSafesRecycler() {
         RecyclerView recyclerView = findViewById(R.id.recyclerSafes);
-        safesAdapter = new SafesAdapter(this, child.getSafes());
+        safesAdapter = new SafesAdapter(this, child.getSafes(), this);
         recyclerView.setAdapter(safesAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -137,7 +139,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onQuestClick(int position) {
 
         List<Quest> quests = child.getQuests();
         Intent i = new Intent(getApplicationContext(), OpenQuestActivity.class);
@@ -151,6 +153,24 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
         i.putExtra("child_balance", child.getBalance().toString());
         startActivityForResult(i, REQUEST_QUEST);
     }
+
+    @Override
+    public void onSafeClick(int position) {
+
+        List<Safe> safes = child.getSafes();
+        Intent i = new Intent(getApplicationContext(), OpenSafeActivity.class);
+
+        i.putExtra("goal", safes.get(position).getGoal());
+        i.putExtra("progress", safes.get(position).getBalance());
+        i.putExtra("color", safes.get(position).getColor());
+        i.putExtra("safeName", safes.get(position).getName());
+        i.putExtra("child_id", childId);
+        i.putExtra("child_balance", child.getBalance().toString());
+        i.putExtra("safePos", String.valueOf(position+1));
+
+        startActivityForResult(i, REQUEST_SAFE);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -167,6 +187,19 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
             child.removeQuestByTitle(title);
             questAdapter.notifyItemRemoved(position);
+        }
+
+        if (requestCode == REQUEST_SAFE && resultCode == SAFE_DEPOSIT_CODE) {
+            int position = data.getIntExtra("position", 0);
+            int progress = data.getIntExtra("progress", 0);
+            child.getSafes().get(position).setBalance(progress);
+
+            Double balance = data.getDoubleExtra("balance", 0.0);
+            child.setBalance(balance);
+            setTreasure(child.getBalance());
+            mDatabase.child("childs").child(childId).child("balance").setValue(child.getBalance());
+
+            safesAdapter.notifyItemChanged(position);
         }
     }
 
