@@ -78,9 +78,11 @@ public class OpenSafeActivity extends AppCompatActivity {
 
         balanceValue -= count;
 
-        balance.setText(balanceValue.toString());
+        setBalance(balanceValue);
         hasDeposit = true;
 
+        count = 0;
+        value.setText("00.00");
     }
 
     public void close (View v) {

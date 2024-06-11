@@ -50,6 +50,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     private TextView treasure;
     private QuestAdapter questAdapter;
     private SafesAdapter safesAdapter;
+    private RecyclerView recyclerView;
     private DecimalFormat formato = new DecimalFormat("#.##");
 
     @SuppressLint("MissingInflatedId")
@@ -116,7 +117,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
     }
 
     private void setQuestsRecycler() {
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         questAdapter = new QuestAdapter(this, child.getQuests(), this);
         recyclerView.setAdapter(questAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -184,6 +185,7 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
 
             child.removeQuestByTitle(title);
             questAdapter.notifyItemRemoved(position);
+            questAdapter.notifyItemRangeChanged(0, child.getQuests().size());
         }
 
         if (requestCode == RequestCode.REQUEST_SAFE.getCode() && resultCode == RequestCode.SAFE_DEPOSIT_CODE.getCode()) {
@@ -222,20 +224,25 @@ public class TreasureActivity extends AppCompatActivity implements RecyclerViewI
             child = (Child) data.getSerializableExtra("child");
             int removed = data.getIntExtra("positionRemoved", 50);
 
-            if (removed == 50) return;
-
-            questAdapter.notifyItemRemoved(removed);
+            if (removed != 50) {
+//                questAdapter.notifyItemRemoved(removed);
+                questAdapter = new QuestAdapter(this, child.getQuests(), this);
+                recyclerView.setAdapter(questAdapter);
+                setTreasure(child.getBalance());
+            }
         }
 
         if(requestCode == RequestCode.REQUEST_QUEST_SCREEN.getCode() && resultCode == RequestCode.GOTO_SAFES.getCode()) {
             child = (Child) data.getSerializableExtra("child");
             int removed = data.getIntExtra("positionRemoved", 50);
 
-            if (removed == 50) return;
+            if (removed != 50) {
+                questAdapter = new QuestAdapter(this, child.getQuests(), this);
+                recyclerView.setAdapter(questAdapter);
+                setTreasure(child.getBalance());
 
-            questAdapter.notifyItemRemoved(removed);
-
-            startSafeScreen();
+                startSafeScreen();
+            }
         }
     }
 

@@ -105,7 +105,7 @@ public class OpenQuestActivity extends AppCompatActivity {
                 new Intent()
                         .putExtra("value", questReward)
                         .putExtra("title", questTitle)
-                        .putExtra("position", quest_position));
+                        .putExtra("position", Integer.valueOf(quest_position)));
         finish();
     }
 }
